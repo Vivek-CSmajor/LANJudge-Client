@@ -1,0 +1,21 @@
+.loading-page {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+.loading-logo { font-size: 18px; font-weight: 700; color: #101828; letter-spacing: -0.3px; }
+.loading-logo-accent { color: #3b5998; }
+
+.loading-spin { color: #3b5998; animation: loadingSpin 0.75s linear infinite; }
+
+@keyframes loadingSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .loading-spin { animation: none; }
+}

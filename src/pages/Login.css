@@ -1,0 +1,224 @@
+/* ── Design tokens pulled from the Figma/Codeforces-style reference ── */
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+.login-page {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Top bar ── */
+.topbar {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  position: relative;
+  z-index: 1;
+}
+
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #3b5998;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: #101828;
+  letter-spacing: -0.3px;
+}
+
+.logo-accent {
+  color: #3b5998;
+}
+
+/* ── Main content ── */
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 16px;
+}
+
+/* ── Card ── */
+.login-card {
+  background: #fff;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 480px;
+  padding: 40px;
+  box-shadow: 0 4px 36px 8px rgba(0,0,0,0.03);
+  box-sizing: border-box;
+}
+
+.login-card-header {
+  margin-bottom: 28px;
+}
+
+.login-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #030229;
+  margin: 0 0 6px;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: rgba(3, 2, 41, 0.7);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Notice banners (error + informational) ── */
+.login-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 13px 14px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+.login-notice svg { flex-shrink: 0; margin-top: 1px; }
+.login-notice strong { display: block; font-size: 13.5px; margin-bottom: 2px; }
+.login-notice p { margin: 0; font-weight: 400; line-height: 1.4; }
+
+.login-notice--error {
+  background: #fef3f2;
+  border: 1px solid #fda29b;
+}
+.login-notice--error svg { color: #d92d20; }
+.login-notice--error strong,
+.login-notice--error p { color: #912018; }
+
+/* A device mismatch isn't a failure — it's already been handled (an
+   override request went to the admin), so it reads as informational. */
+.login-notice--device {
+  background: rgba(255, 198, 42, 0.14);
+  border: 1px solid #f0c419;
+}
+.login-notice--device svg { color: #988300; }
+.login-notice--device strong,
+.login-notice--device p { color: #7a6800; }
+
+/* ── Form ── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #030229;
+}
+
+.login-input-wrap {
+  position: relative;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a8a8a;
+  pointer-events: none;
+}
+
+.login-input-wrap input {
+  width: 100%;
+  height: 47px;
+  padding: 0 16px 0 46px;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #030229;
+  outline: none;
+  box-sizing: border-box;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* A login code is a credential, not a name — set it like one. */
+#loginCode {
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  letter-spacing: 0.4px;
+}
+
+.login-input-wrap input::placeholder {
+  color: #8a8a8a;
+}
+
+.login-input-wrap input:hover {
+  border-color: #d5d5d5;
+}
+
+.login-input-wrap input:focus {
+  border-color: #3b5998;
+  box-shadow: 0 0 0 4px rgba(59, 89, 152, 0.12);
+}
+
+/* ── Submit button ── */
+.login-submit-btn {
+  height: 47px;
+  background: #3b5998;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+  transition: background 0.15s, transform 0.05s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.login-submit-btn:hover:not(:disabled) { background: #324b80; }
+.login-submit-btn:active:not(:disabled) { background: #2a3f6b; transform: translateY(1px); }
+.login-submit-btn:disabled { opacity: 0.65; cursor: default; }
+
+/* ── Footer note ── */
+.login-footer {
+  font-size: 12px;
+  color: #a6a6a6;
+  text-align: center;
+  margin: 24px 0 0;
+  line-height: 1.6;
+}

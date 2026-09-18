@@ -1,0 +1,176 @@
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin {
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+.connect-page {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Topbar ── */
+.connect-topbar {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.connect-topbar-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.connect-logo-icon { color: #3b5998; flex-shrink: 0; }
+.connect-logo { font-size: 18px; font-weight: 700; color: #101828; letter-spacing: -0.3px; }
+.connect-logo-accent { color: #3b5998; }
+
+/* ── Main ── */
+.connect-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.connect-card {
+  background: #fff;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 440px;
+  padding: 36px 40px;
+  box-shadow: 0 4px 36px 8px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+}
+
+.connect-card-header { margin-bottom: 22px; }
+
+.connect-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0 0 8px;
+}
+
+.connect-subtitle {
+  font-size: 13px;
+  color: #667085;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Error banner ── */
+.connect-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fef3f2;
+  border: 1px solid #fda29b;
+  border-radius: 10px;
+  color: #912018;
+  padding: 12px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+.connect-error svg { flex-shrink: 0; }
+
+/* ── Form ── */
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.connect-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.connect-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #030229;
+}
+
+.connect-input-wrap {
+  position: relative;
+}
+
+.connect-input-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a8a8a;
+  pointer-events: none;
+}
+
+.connect-input-wrap input {
+  width: 100%;
+  height: 47px;
+  padding: 0 16px 0 46px;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  color: #030229;
+  outline: none;
+  box-sizing: border-box;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.connect-input-wrap input::placeholder {
+  color: #8a8a8a;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+}
+.connect-input-wrap input:hover { border-color: #d5d5d5; }
+.connect-input-wrap input:focus {
+  border-color: #3b5998;
+  box-shadow: 0 0 0 4px rgba(59, 89, 152, 0.12);
+}
+
+/* ── Submit button ── */
+.connect-submit-btn {
+  height: 47px;
+  background: #3b5998;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 4px;
+  transition: background 0.15s, transform 0.05s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.connect-submit-btn:hover:not(:disabled) { background: #324b80; }
+.connect-submit-btn:active:not(:disabled) { background: #2a3f6b; transform: translateY(1px); }
+.connect-submit-btn:disabled { opacity: 0.65; cursor: default; }
+
+/* ── Footer note ── */
+.connect-footer {
+  text-align: center;
+  font-size: 12.5px;
+  color: #98a2b3;
+  margin: 20px 0 0;
+}

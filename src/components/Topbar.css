@@ -1,0 +1,153 @@
+.topbar {
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  position: relative;
+  z-index: 5;
+}
+
+.topbar-inner {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon { color: #3b5998; flex-shrink: 0; }
+
+.logo { font-size: 18px; font-weight: 700; color: #101828; letter-spacing: -0.3px; }
+.logo-accent { color: #3b5998; }
+
+.topbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: 40px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  color: #101828;
+  cursor: pointer;
+}
+.nav-link:hover { color: #3b5998; }
+.nav-link--active {
+  color: #3b5998;
+  font-weight: 600;
+}
+
+.contest-name {
+  font-size: 13px;
+  color: #667085;
+  font-weight: 600;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  color: #3b5998;
+  background: rgba(59, 89, 152, 0.08);
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer--paused {
+  color: #b54708;
+  background: rgba(255, 178, 36, 0.15);
+}
+
+.timer--pending {
+  color: #988300;
+  background: rgba(255, 198, 42, 0.14);
+}
+
+.timer--ended {
+  color: #912018;
+  background: #fef3f2;
+}
+
+/* Last stretch of the clock — a quiet pulse, not an alarm. */
+.timer--urgent {
+  color: #912018;
+  background: #fef3f2;
+  animation: timerPulse 1.6s ease-in-out infinite;
+}
+@keyframes timerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 45, 32, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(217, 45, 32, 0.14); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .timer--urgent { animation: none; }
+}
+
+.timer--offline {
+  opacity: 0.5;
+}
+
+.timer--unknown {
+  color: #667085;
+  background: rgba(102, 112, 133, 0.1);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.75s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; }
+}
+
+.team-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #344054;
+}
+
+.topbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.topbar-btn:hover { background: #f8fafc; border-color: #c0c4cc; }
+.topbar-btn--logout {
+  background: transparent;
+  border-color: transparent;
+  color: #98a2b3;
+  padding: 7px 8px;
+}
+.topbar-btn--logout:hover { background: #fef3f2; border-color: #fda29b; color: #d92d20; }

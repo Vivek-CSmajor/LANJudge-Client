@@ -1,0 +1,229 @@
+.scoreboard-page {
+  min-height: 100vh;
+  background: #fafafa;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Topbar (shared component) ── */
+.topbar { flex-shrink: 0; }
+
+/* ── Main ── */
+.scoreboard-main {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scoreboard-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  color: #344054;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.refresh-btn:hover { background: #f8fafc; border-color: #c0c4cc; }
+
+.ws-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 16px;
+}
+.ws-status.live    { background: rgba(20, 191, 88, 0.09); color: #037847; }
+.ws-status.offline { background: #fef3f2; color: #912018; }
+
+/* ── Freeze banner ── */
+.freeze-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(59, 89, 152, 0.06);
+  border: 1px solid rgba(59, 89, 152, 0.25);
+  color: #3b5998;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.freeze-banner svg { flex-shrink: 0; }
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0 0 20px;
+}
+
+.empty-state {
+  color: #667085;
+  font-size: 13px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #d5d5d5;
+  border-radius: 8px;
+  padding: 40px 0;
+}
+
+/* ── Table ── */
+.scoreboard-card {
+  background: #fff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.sb-scroll {
+  overflow-x: auto;
+}
+
+.sb-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sb-table thead {
+  background: #fcfcfd;
+}
+.sb-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: #667085;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.sb-row {
+  border-bottom: 1px solid #eaecf0;
+  transition: background 0.12s;
+}
+.sb-row:last-child { border-bottom: none; }
+.sb-row:hover { background: #f8fafc; }
+
+.sb-row--me {
+  background: rgba(59, 89, 152, 0.05);
+  box-shadow: inset 3px 0 0 #3b5998;
+  font-weight: 600;
+}
+.sb-row--me:hover { background: rgba(59, 89, 152, 0.08); }
+
+.sb-table td { padding: 13px 20px; }
+
+.col-rank  { width: 52px; text-align: center; font-weight: 600; color: #344054; font-family: 'Fira Code', ui-monospace, Consolas, monospace; }
+.col-team  { color: #101828; }
+.col-solved { width: 80px; text-align: center; color: #037847; font-weight: 600; font-family: 'Fira Code', ui-monospace, Consolas, monospace; }
+.col-penalty { width: 90px; text-align: center; color: #667085; font-family: 'Fira Code', ui-monospace, Consolas, monospace; }
+.col-time  { width: 100px; text-align: center; color: #667085; font-size: 13px; font-family: 'Fira Code', ui-monospace, Consolas, monospace; }
+
+.col-problem { width: 64px; text-align: center; padding: 8px !important; }
+.col-problem-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+}
+
+.sb-table th.col-rank,
+.sb-table th.col-solved,
+.sb-table th.col-penalty,
+.sb-table th.col-time,
+.sb-table th.col-problem { text-align: center; }
+
+/* ── Per-problem verdict cells ── */
+.pc {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+}
+.pc--ac { color: #037847; }
+.pc--ac .pc-time { font-size: 10px; font-weight: 500; opacity: 0.75; }
+.pc--wa { color: #d92d20; }
+.pc--pending { color: #98a2b3; font-weight: 600; }
+.pc--untouched { color: #d0d5dd; font-weight: 400; }
+
+/* ── Medal badges ── */
+.medal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+}
+.medal.gold   { background: #f9a825; }
+.medal.silver { background: #90a4ae; }
+.medal.bronze { background: #a1887f; }
+
+/* ── Rank movement — the standings actually feel live ── */
+.rank-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+@keyframes rankDeltaIn {
+  0%   { opacity: 0; transform: translateY(3px) scale(0.7); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.rank-delta {
+  animation: rankDeltaIn 0.3s ease-out;
+}
+.rank-delta--up { color: #037847; }
+.rank-delta--down { color: #912018; }
+@media (prefers-reduced-motion: reduce) {
+  .rank-delta { animation: none; }
+}
+
+/* ── YOU tag ── */
+.you-tag {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(59, 89, 152, 0.1);
+  color: #3b5998;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-right: 8px;
+  vertical-align: middle;
+}

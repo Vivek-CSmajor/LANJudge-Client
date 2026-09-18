@@ -1,0 +1,46 @@
+.problem-switcher {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eaecf0;
+  margin-bottom: 20px;
+}
+
+.problem-switcher-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #98a2b3;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  flex-shrink: 0;
+}
+
+.problem-switcher-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.switcher-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.1s;
+}
+/* box-shadow (not background) so hover still reads on the tinted, per-difficulty pills */
+.switcher-pill:hover { box-shadow: 0 0 0 1px rgba(16, 24, 40, 0.12); }
+.switcher-pill:active { transform: scale(0.95); }
+
+.switcher-pill--active {
+  background: #3b5998;
+  border-color: #3b5998;
+  color: #fff;
+}

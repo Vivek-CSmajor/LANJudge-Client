@@ -1,0 +1,47 @@
+.pause-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 10, 18, 0.85);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+}
+
+.pause-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 360px;
+  padding: 32px;
+}
+
+.pause-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99, 130, 199, 0.18);
+  color: #8fa8d9;
+  margin-bottom: 4px;
+}
+
+.pause-overlay-content h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.pause-overlay-content p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
+}

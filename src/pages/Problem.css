@@ -1,0 +1,440 @@
+.problem-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  -webkit-font-smoothing: antialiased;
+}
+
+.topbar { flex-shrink: 0; }
+
+.problem-shell {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  border-bottom: 1px solid #eaecf0;
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.tab-bar-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-pill {
+  height: 35px;
+  padding: 0 20px;
+  border-radius: 100px;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  color: #344054;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.tab-pill:hover { background: #f8fafc; }
+
+.tab-pill--active {
+  background: #3b5998;
+  border-color: #3b5998;
+  color: #fff;
+}
+.tab-pill--active:hover { background: #3b5998; }
+
+/* ── Shared status blocks ── */
+.fetch-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fef3f2;
+  border: 1px solid #fda29b;
+  border-radius: 10px;
+  color: #912018;
+  padding: 13px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.fetch-error svg { flex-shrink: 0; }
+
+.loading-state { color: #667085; font-size: 13px; }
+
+.empty-state {
+  color: #667085;
+  font-size: 13px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #d5d5d5;
+  border-radius: 8px;
+  padding: 40px 0;
+}
+
+/* ── Tabs ── */
+.tab-panel[hidden] { display: none; }
+
+/* ── Problems tab: statement ── */
+.statement-card {
+  background: #fff;
+  border: 1px solid #eaecf0;
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.problem-header { margin-bottom: 20px; }
+
+.problem-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: rgba(59, 89, 152, 0.08);
+  color: #3b5998;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  margin-bottom: 10px;
+}
+
+.problem-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #101828;
+  margin: 8px 0 12px;
+}
+
+.problem-constraints { display: flex; gap: 16px; }
+.constraint {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12.5px; color: #667085;
+}
+
+.problem-statement { line-height: 1.7; font-size: 14px; color: #030229; }
+
+.problem-statement h1,
+.problem-statement h2,
+.problem-statement h3 {
+  font-family: inherit;
+  color: #101828;
+  margin: 20px 0 8px;
+  font-weight: 600;
+}
+.problem-statement h1 { font-size: 17px; margin-top: 0; }
+.problem-statement h2 { font-size: 15px; }
+.problem-statement h3 { font-size: 14px; }
+.problem-statement p  { margin: 0 0 12px; }
+
+.problem-statement pre {
+  background: #f8fafc;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  overflow-x: auto;
+  margin: 8px 0 14px;
+}
+.problem-statement code {
+  background: #f4f5f7;
+  color: #344054;
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 13px;
+}
+.problem-statement pre code { background: none; padding: 0; color: inherit; }
+
+.statement-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eaecf0;
+}
+
+/* ── Submit tab ── */
+.submit-header { margin-bottom: 24px; }
+
+.submit-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0 0 8px;
+}
+
+.submit-context {
+  font-size: 14px;
+  color: rgba(3, 2, 41, 0.63);
+  margin: 0;
+}
+.submit-context-strong { color: #101828; font-weight: 500; }
+
+.submit-fields-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.field-block--lang { flex: 1; }
+.field-block--tabsize { width: 160px; flex-shrink: 0; }
+
+.field-block > label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.select-wrap { position: relative; }
+
+.select-box {
+  width: 100%;
+  height: 40px;
+  padding: 0 36px 0 14px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  background: #fff;
+  color: #171717;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+}
+.select-box:disabled { opacity: 0.6; cursor: default; }
+
+.select-chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #667085;
+  pointer-events: none;
+}
+
+.submit-hint {
+  font-size: 13px;
+  color: #8d8d8d;
+  margin: -8px 0 20px;
+}
+
+.source-code-box {
+  height: 440px;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* ── Custom Test tab ── */
+.customtest-hint {
+  font-size: 13px;
+  color: #667085;
+  margin: 0 0 14px;
+}
+
+.custom-io--standalone {
+  display: flex;
+  gap: 16px;
+  height: 320px;
+}
+
+.custom-io--standalone .io-panel {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #eaecf0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.io-panel label {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #667085;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 10px 14px 8px;
+}
+
+.io-box {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #101828;
+  font-family: 'Fira Code', ui-monospace, Consolas, Monaco, monospace;
+  font-size: 12.5px;
+  padding: 0 14px 14px;
+  box-sizing: border-box;
+}
+.io-box::placeholder { color: #98a2b3; }
+
+.customtest-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* ── Status tab ── */
+.status-card {
+  background: #fff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.status-table thead { background: #fcfcfd; }
+.status-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: #667085;
+  border-bottom: 1px solid #eaecf0;
+}
+.status-table td {
+  padding: 13px 20px;
+  border-bottom: 1px solid #eaecf0;
+  color: #344054;
+}
+.status-table tr:last-child td { border-bottom: none; }
+.status-id {
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  color: #667085;
+}
+
+/* ── Buttons ── */
+.btn-run {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  color: #344054;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-run:hover:not(:disabled) { background: #f8fafc; border-color: #c0c4cc; }
+.btn-run:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-submit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #3b5998;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-submit:hover:not(:disabled) { background: #324b80; }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.submit-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.submit-bar .btn-submit { margin-left: auto; }
+
+.submit-err {
+  font-size: 12.5px;
+  color: #d92d20;
+}
+
+.submit-blocked-hint {
+  font-size: 12.5px;
+  color: #667085;
+}
+
+.polling-state {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #667085;
+}
+.polling-state svg { color: #3b5998; }
+
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 16px;
+}
+
+/* The verdict is the emotional peak of a submission — worth one earned beat. */
+@keyframes verdictReveal {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.verdict-badge--reveal {
+  animation: verdictReveal 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .verdict-badge--reveal { animation: none; }
+}
+
+.ce-log {
+  font-weight: 400;
+  margin-top: 6px;
+}
+.ce-log summary { cursor: pointer; font-size: 12px; }
+.ce-log pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  margin-top: 4px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+/* spinner */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.75s linear infinite; flex-shrink: 0; }

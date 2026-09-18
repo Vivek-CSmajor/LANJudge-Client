@@ -1,0 +1,197 @@
+.history-page {
+  min-height: 100vh;
+  background: #fafafa;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+.history-main {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0 0 20px;
+}
+
+.fetch-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fef3f2;
+  border: 1px solid #fda29b;
+  border-radius: 10px;
+  color: #912018;
+  padding: 13px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.fetch-error svg { flex-shrink: 0; }
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #667085;
+  font-size: 13px;
+}
+
+.empty-state {
+  color: #667085;
+  font-size: 13px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed #d5d5d5;
+  border-radius: 8px;
+  padding: 40px 0;
+}
+
+/* ── Table ── */
+.history-card {
+  background: #fff;
+  border: 1px solid #eaecf0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+
+.history-scroll { overflow-x: auto; }
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.history-table thead { background: #fcfcfd; }
+.history-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  color: #667085;
+  border-bottom: 1px solid #eaecf0;
+  white-space: nowrap;
+}
+.history-table td {
+  padding: 13px 20px;
+  border-bottom: 1px solid #eaecf0;
+  color: #344054;
+}
+.history-row { cursor: pointer; transition: background 0.12s; }
+.history-row:hover { background: #f8fafc; }
+.history-row:last-child td { border-bottom: none; }
+
+.history-id {
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  color: #667085;
+}
+
+.history-problem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #101828;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.history-problem-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  flex-shrink: 0;
+}
+
+.history-time {
+  color: #667085;
+  font-size: 13px;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  white-space: nowrap;
+}
+
+.verdict-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+/* ── Code viewer modal ── */
+.code-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 24, 40, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 40px;
+}
+
+.code-modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
+  max-height: 640px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+.code-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #eaecf0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+  flex-shrink: 0;
+}
+
+.code-modal-close {
+  background: none;
+  border: none;
+  color: #98a2b3;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.code-modal-close:hover { background: #f2f4f7; color: #344054; }
+
+.code-modal-body {
+  flex: 1;
+  min-height: 0;
+  padding: 16px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.code-modal-body .loading-state { padding: 20px 0; }
+
+/* spinner (shared pattern) */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.75s linear infinite; flex-shrink: 0; }

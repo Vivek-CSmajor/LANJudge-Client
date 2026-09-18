@@ -1,0 +1,304 @@
+/* ────────────────────────────────────────────────────────────────────────
+   Dark mode — purely additive overrides. Nothing in the page-specific CSS
+   files is touched; every rule here is scoped under [data-theme="dark"],
+   which always outweighs the plain-class light-mode rule it replaces
+   (attribute selector + class = higher specificity than the class alone),
+   so light mode's appearance is completely unaffected regardless of source
+   order. Toggled via useTheme() / <ThemeToggle>, which sets
+   documentElement[data-theme].
+   ──────────────────────────────────────────────────────────────────────── */
+
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+
+/* ── Page shells (Connect/Login/WaitingRoom/Problems/Problem/Scoreboard/
+   SubmissionHistory/Loading all follow this same background+text pattern) ── */
+[data-theme="dark"] .connect-page,
+[data-theme="dark"] .login-page,
+[data-theme="dark"] .contest-page,
+[data-theme="dark"] .problem-page,
+[data-theme="dark"] .scoreboard-page,
+[data-theme="dark"] .history-page,
+[data-theme="dark"] .waiting-page,
+[data-theme="dark"] .loading-page {
+  background: #14151b;
+  color: #e5e7eb;
+}
+
+/* ── Shared header bar (Topbar component + Connect's own header) ── */
+[data-theme="dark"] .topbar,
+[data-theme="dark"] .connect-topbar {
+  background: #1a1b21;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] .logo,
+[data-theme="dark"] .connect-logo,
+[data-theme="dark"] .waiting-logo,
+[data-theme="dark"] .loading-logo {
+  color: #f1f2f4;
+}
+[data-theme="dark"] .logo-accent,
+[data-theme="dark"] .connect-logo-accent,
+[data-theme="dark"] .waiting-logo-accent,
+[data-theme="dark"] .loading-logo-accent,
+[data-theme="dark"] .logo-icon,
+[data-theme="dark"] .connect-logo-icon {
+  color: #7c9cd6;
+}
+[data-theme="dark"] .loading-spin { color: #7c9cd6; }
+
+/* ── Topbar nav / timer / team badge / buttons ── */
+[data-theme="dark"] .nav-link { color: #d7dae0; }
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link--active { color: #93b4e8; }
+[data-theme="dark"] .contest-name { color: #8b8f9c; }
+[data-theme="dark"] .team-badge { color: #c7cad1; }
+[data-theme="dark"] .timer { color: #93b4e8; background: rgba(124, 156, 214, 0.16); }
+[data-theme="dark"] .timer--paused { color: #fbbf24; background: rgba(251, 191, 36, 0.16); }
+[data-theme="dark"] .timer--pending { color: #facc15; background: rgba(250, 204, 21, 0.16); }
+[data-theme="dark"] .timer--ended,
+[data-theme="dark"] .timer--urgent { color: #f87171; background: rgba(248, 113, 113, 0.14); }
+[data-theme="dark"] .timer--unknown { color: #8b8f9c; background: rgba(255, 255, 255, 0.06); }
+[data-theme="dark"] .topbar-btn {
+  background: #1c1d24;
+  border-color: #3a3d4a;
+  color: #c7cad1;
+}
+[data-theme="dark"] .topbar-btn:hover { background: #23252d; border-color: #454854; }
+[data-theme="dark"] .topbar-btn--logout { color: #7d8190; }
+[data-theme="dark"] .topbar-btn--logout:hover {
+  background: rgba(248, 113, 113, 0.14);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #f87171;
+}
+
+/* ── Cards / panels shared across pages ── */
+[data-theme="dark"] .connect-card,
+[data-theme="dark"] .login-card,
+[data-theme="dark"] .problems-card,
+[data-theme="dark"] .scoreboard-card,
+[data-theme="dark"] .history-card,
+[data-theme="dark"] .status-card,
+[data-theme="dark"] .statement-card,
+[data-theme="dark"] .code-modal,
+[data-theme="dark"] .waiting-card,
+[data-theme="dark"] .custom-io--standalone .io-panel {
+  background: #1c1d24;
+  border-color: #2e303a;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Tables (Problems / Scoreboard / History / Status) ── */
+[data-theme="dark"] .problems-table thead,
+[data-theme="dark"] .sb-table thead,
+[data-theme="dark"] .history-table thead,
+[data-theme="dark"] .status-table thead {
+  background: #202129;
+}
+[data-theme="dark"] .problems-table th,
+[data-theme="dark"] .sb-table th,
+[data-theme="dark"] .history-table th,
+[data-theme="dark"] .status-table th {
+  color: #8b8f9c;
+  border-bottom-color: #2e303a;
+}
+[data-theme="dark"] .problem-row,
+[data-theme="dark"] .sb-row,
+[data-theme="dark"] .history-row {
+  border-bottom-color: #2e303a;
+}
+[data-theme="dark"] .status-table td {
+  border-bottom-color: #2e303a;
+  color: #c7cad1;
+}
+[data-theme="dark"] .history-table td { color: #c7cad1; }
+[data-theme="dark"] .problem-row:hover,
+[data-theme="dark"] .sb-row:hover,
+[data-theme="dark"] .history-row:hover {
+  background: #22242c;
+}
+[data-theme="dark"] .sb-row--me {
+  background: rgba(124, 156, 214, 0.1);
+  box-shadow: inset 3px 0 0 #7c9cd6;
+}
+[data-theme="dark"] .sb-row--me:hover { background: rgba(124, 156, 214, 0.16); }
+[data-theme="dark"] .prob-title,
+[data-theme="dark"] .col-team,
+[data-theme="dark"] .history-problem {
+  color: #f1f2f4;
+}
+[data-theme="dark"] .problem-row:hover .prob-title { color: #93b4e8; }
+[data-theme="dark"] .prob-meta,
+[data-theme="dark"] .col-penalty,
+[data-theme="dark"] .col-time,
+[data-theme="dark"] .status-id,
+[data-theme="dark"] .history-id,
+[data-theme="dark"] .history-time {
+  color: #8b8f9c;
+}
+[data-theme="dark"] .prob-meta svg,
+[data-theme="dark"] .prob-arrow { color: #6b7280; }
+[data-theme="dark"] .problem-row:hover .prob-arrow { color: #93b4e8; }
+[data-theme="dark"] .col-rank { color: #c7cad1; }
+[data-theme="dark"] .col-solved { color: #4ade80; }
+
+/* ── Empty / loading / error status blocks (shared class names) ── */
+[data-theme="dark"] .empty-state {
+  color: #8b8f9c;
+  background: #191a20;
+  border-color: #3a3d4a;
+}
+[data-theme="dark"] .loading-state { color: #8b8f9c; }
+[data-theme="dark"] .section-title { color: #f1f2f4; }
+[data-theme="dark"] .fetch-error,
+[data-theme="dark"] .connect-error,
+[data-theme="dark"] .login-notice--error {
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: #f87171;
+}
+[data-theme="dark"] .login-notice--error svg { color: #f87171; }
+[data-theme="dark"] .login-notice--device {
+  background: rgba(250, 204, 21, 0.14);
+  border-color: rgba(250, 204, 21, 0.45);
+}
+[data-theme="dark"] .login-notice--device svg,
+[data-theme="dark"] .login-notice--device strong,
+[data-theme="dark"] .login-notice--device p {
+  color: #facc15;
+}
+
+/* ── Inputs (Connect / Login / Problem submit fields) ── */
+[data-theme="dark"] .connect-field label,
+[data-theme="dark"] .login-field label,
+[data-theme="dark"] .field-block > label,
+[data-theme="dark"] .connect-title,
+[data-theme="dark"] .login-title,
+[data-theme="dark"] .submit-title,
+[data-theme="dark"] .submit-context-strong,
+[data-theme="dark"] .problem-title,
+[data-theme="dark"] .waiting-title,
+[data-theme="dark"] .code-modal-header {
+  color: #f1f2f4;
+}
+[data-theme="dark"] .connect-subtitle,
+[data-theme="dark"] .login-subtitle,
+[data-theme="dark"] .submit-context,
+[data-theme="dark"] .constraint,
+[data-theme="dark"] .select-chevron,
+[data-theme="dark"] .io-panel label,
+[data-theme="dark"] .customtest-hint,
+[data-theme="dark"] .waiting-subtitle,
+[data-theme="dark"] .polling-state {
+  color: #8b8f9c;
+}
+[data-theme="dark"] .polling-state svg { color: #7c9cd6; }
+[data-theme="dark"] .connect-input-icon,
+[data-theme="dark"] .login-input-icon,
+[data-theme="dark"] .submit-hint,
+[data-theme="dark"] .io-box::placeholder,
+[data-theme="dark"] .connect-footer,
+[data-theme="dark"] .login-footer,
+[data-theme="dark"] .waiting-countdown-label,
+[data-theme="dark"] .waiting-team-note,
+[data-theme="dark"] .problem-switcher-label,
+[data-theme="dark"] .code-modal-close {
+  color: #6b7280;
+}
+[data-theme="dark"] .code-modal-close:hover { background: #262832; color: #d7dae0; }
+[data-theme="dark"] .connect-input-wrap input,
+[data-theme="dark"] .login-input-wrap input,
+[data-theme="dark"] .select-box,
+[data-theme="dark"] .io-box {
+  background: #1c1d24;
+  border-color: #3a3d4a;
+  color: #f1f2f4;
+}
+[data-theme="dark"] .connect-input-wrap input::placeholder,
+[data-theme="dark"] .login-input-wrap input::placeholder {
+  color: #6b7280;
+}
+[data-theme="dark"] .connect-input-wrap input:hover,
+[data-theme="dark"] .login-input-wrap input:hover {
+  border-color: #454854;
+}
+[data-theme="dark"] .connect-input-wrap input:focus,
+[data-theme="dark"] .login-input-wrap input:focus {
+  border-color: #7c9cd6;
+  box-shadow: 0 0 0 4px rgba(124, 156, 214, 0.18);
+}
+
+/* ── Buttons (secondary/outline style shared by several pages) ── */
+[data-theme="dark"] .btn-run,
+[data-theme="dark"] .refresh-btn,
+[data-theme="dark"] .switcher-pill,
+[data-theme="dark"] .tab-pill {
+  background: #1c1d24;
+  border-color: #3a3d4a;
+  color: #c7cad1;
+}
+[data-theme="dark"] .btn-run:hover:not(:disabled),
+[data-theme="dark"] .refresh-btn:hover,
+[data-theme="dark"] .tab-pill:hover {
+  background: #23252d;
+  border-color: #454854;
+}
+[data-theme="dark"] .switcher-pill:hover { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15); }
+[data-theme="dark"] .tab-pill--active { background: #3b5998; border-color: #3b5998; color: #fff; }
+
+/* ── Scoreboard specifics ── */
+[data-theme="dark"] .ws-status.live { background: rgba(74, 222, 128, 0.14); color: #4ade80; }
+[data-theme="dark"] .ws-status.offline { background: rgba(248, 113, 113, 0.14); color: #f87171; }
+[data-theme="dark"] .freeze-banner {
+  background: rgba(124, 156, 214, 0.12);
+  border-color: rgba(124, 156, 214, 0.35);
+  color: #93b4e8;
+}
+[data-theme="dark"] .you-tag { background: rgba(124, 156, 214, 0.18); color: #93b4e8; }
+[data-theme="dark"] .pc--ac { color: #4ade80; }
+[data-theme="dark"] .pc--wa { color: #f87171; }
+[data-theme="dark"] .pc--pending { color: #8b8f9c; }
+[data-theme="dark"] .pc--untouched { color: #454854; }
+[data-theme="dark"] .rank-delta--up { color: #4ade80; }
+[data-theme="dark"] .rank-delta--down { color: #f87171; }
+[data-theme="dark"] .submit-err { color: #f87171; }
+[data-theme="dark"] .submit-blocked-hint { color: #8b8f9c; }
+
+/* ── Problem statement (Markdown-rendered) ── */
+[data-theme="dark"] .problem-statement { color: #e5e7eb; }
+[data-theme="dark"] .problem-statement h1,
+[data-theme="dark"] .problem-statement h2,
+[data-theme="dark"] .problem-statement h3 {
+  color: #f1f2f4;
+}
+[data-theme="dark"] .problem-statement pre {
+  background: #1f2027;
+  border-color: #2e303a;
+}
+[data-theme="dark"] .problem-statement code {
+  background: #262832;
+  color: #d7dae0;
+}
+[data-theme="dark"] .statement-footer,
+[data-theme="dark"] .tab-bar { border-color: #2e303a; }
+[data-theme="dark"] .problem-switcher { border-bottom-color: #2e303a; }
+[data-theme="dark"] .source-code-box { border-color: #3a3d4a; }
+
+/* ── Submission History code modal ── */
+[data-theme="dark"] .code-modal-backdrop { background: rgba(0, 0, 0, 0.6); }
+[data-theme="dark"] .code-modal-header { border-bottom-color: #2e303a; }
+
+/* ── Waiting Room ── */
+[data-theme="dark"] .waiting-icon { background: rgba(124, 156, 214, 0.16); color: #93b4e8; }
+[data-theme="dark"] .waiting-countdown,
+[data-theme="dark"] .waiting-team {
+  color: #93b4e8;
+}
+[data-theme="dark"] .waiting-team-note .waiting-team { color: #a8acb8; }
+[data-theme="dark"] .waiting-offline { color: #f87171; background: rgba(248, 113, 113, 0.14); }
+
+/* ── Custom Test tab I/O boxes ── */
+[data-theme="dark"] .customtest-hint { color: #8b8f9c; }
+
+/* ── Compiler output / verdict log stays a terminal regardless of theme —
+   intentionally unchanged (#1e1e1e / #d4d4d4 already read fine on both). ── */

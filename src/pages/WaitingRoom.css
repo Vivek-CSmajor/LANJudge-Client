@@ -1,0 +1,113 @@
+.waiting-page {
+  min-height: 100vh;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  font-size: 14px;
+  color: #030229;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Branding only — no links, no buttons. This isn't navigation. */
+.waiting-brand {
+  padding: 28px 0 0;
+  text-align: center;
+}
+.waiting-logo { font-size: 18px; font-weight: 700; color: #101828; letter-spacing: -0.3px; }
+.waiting-logo-accent { color: #3b5998; }
+
+.waiting-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.waiting-card {
+  background: #fff;
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 440px;
+  padding: 44px 40px;
+  box-shadow: 0 4px 36px 8px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.waiting-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 89, 152, 0.08);
+  color: #3b5998;
+  margin-bottom: 20px;
+  animation: waitingBreathe 2.6s ease-in-out infinite;
+}
+@keyframes waitingBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .waiting-icon { animation: none; }
+}
+
+.waiting-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: #101828;
+  margin: 0 0 10px;
+}
+.waiting-team { color: #3b5998; }
+
+.waiting-subtitle {
+  font-size: 13.5px;
+  color: #667085;
+  line-height: 1.6;
+  margin: 0 0 24px;
+  max-width: 340px;
+}
+
+.waiting-countdown {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Fira Code', ui-monospace, Consolas, monospace;
+  color: #3b5998;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 2px;
+}
+
+.waiting-countdown-label {
+  font-size: 12px;
+  color: #98a2b3;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin: 0 0 24px;
+}
+
+.waiting-team-note {
+  font-size: 13px;
+  color: #98a2b3;
+  margin: 0;
+}
+.waiting-team-note .waiting-team { color: #667085; font-weight: 600; }
+
+.waiting-offline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: #912018;
+  background: #fef3f2;
+  border-radius: 16px;
+  padding: 5px 12px;
+  margin-top: 20px;
+}
