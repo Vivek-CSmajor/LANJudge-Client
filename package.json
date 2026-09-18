@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "node electron/dev.js",
-    "electron:build": "vite build && electron-builder"
+    "electron:build": "vite build && electron-builder --publish never"
   },
   "build": {
     "appId": "com.campuscode.client",
