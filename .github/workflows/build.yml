@@ -23,4 +23,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: campuscode-client-${{ matrix.os }}
-          path: release/*.dmg,release/*.zip,release/*.exe
+          path: |
+            release/*.dmg
+            release/*.zip
+            release/*.exe
+          if-no-files-found: error
