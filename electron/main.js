@@ -1,4 +1,4 @@
-import { app, BrowserWindow, globalShortcut, ipcMain } from 'electron'
+import { app, BrowserWindow, globalShortcut, ipcMain, Menu, dialog } from 'electron'
 import Store from 'electron-store'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -19,15 +19,48 @@ ipcMain.handle('set-server-url', (event, url) => {
 const DEV_SERVER_URL = 'http://localhost:5173'
 
 // Shortcut to flip kiosk/lockdown on and off at runtime, so lockdown can be
-// tested without relaunching the app. REMOVE this before a real deployment —
-// a working escape hatch defeats the entire point of lockdown for an exam.
+// tested without relaunching the app. Only ever registered in dev builds
+// (see app.whenReady() below) — a working escape hatch in a packaged build
+// would defeat the entire point of lockdown for an exam.
 const DEV_MODE_SHORTCUT = 'CommandOrControl+Shift+D'
 
-// Starting state: unlocked unless NODE_ENV=production is explicitly set.
-// This is "isDev" — every security measure below only applies when this is
-// false, checked dynamically inside each handler (not just at startup) so
-// the toggle shortcut flips everything live without recreating the window.
-let devModeEnabled = process.env.NODE_ENV !== 'production'
+// Starting state: locked whenever this is a packaged build. A double-clicked
+// packaged app has no NODE_ENV set at all, so that used to evaluate to
+// "unlocked" for every real user launch — app.isPackaged is Electron's own
+// signal for this and can't be left unset by a normal launch. This is
+// "isDev" — every security measure below only applies when this is false,
+// checked dynamically inside each handler (not just at startup) so the dev
+// toggle shortcut (dev builds only, see below) flips everything live without
+// recreating the window.
+let devModeEnabled = !app.isPackaged
+
+// Debugging/remote-inspection launch flags (--inspect, --remote-debugging-port,
+// etc.) are consumed by Node/Chromium during process bootstrap — often before
+// this file's first line even runs — so a CDP/inspector listener may already
+// be active by the time we can inspect argv. Stripping the switch below is a
+// best-effort defense (it can still prevent Chromium's remote-debugging
+// server from starting, since that's initialized later, during
+// app.whenReady()); it cannot reliably un-bind a Node inspector that may
+// already be listening. The real defense is refusing to continue at all —
+// enforced in app.whenReady() below, before any window is created.
+const DEBUG_FLAG_PATTERN = /^--(remote-debugging-port|remote-debugging-address|inspect|inspect-brk|inspect-port)(=|$)/
+const debugFlags = app.isPackaged
+  ? process.argv.filter((arg) => DEBUG_FLAG_PATTERN.test(arg))
+  : []
+for (const flag of debugFlags) {
+  app.commandLine.removeSwitch(flag.replace(/^--/, '').split('=')[0])
+}
+
+// Removes the default Electron application menu — and with it, the
+// built-in "Toggle Developer Tools" (Cmd+Option+I / Ctrl+Shift+I) and
+// "Toggle Full Screen" (Ctrl+Cmd+F) menu accelerators. Menu accelerators
+// fire through a separate native pipeline from webContents'
+// before-input-event, so the keyboard-shortcut blocking below does not
+// intercept them — this is the only thing that does. Only packaged builds
+// need this; dev builds keep the default menu for convenience.
+if (app.isPackaged) {
+  Menu.setApplicationMenu(null)
+}
 
 // webPreferences.devTools (the setting that fully disables the devtools
 // mechanism at the Chromium level) can only be set at window-creation time,
@@ -126,11 +159,31 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
+  // Checked here (rather than only at module load) so the dialog is
+  // guaranteed to actually render: showErrorBox before the ready event can
+  // silently degrade to a stderr print with no GUI on some platforms.
+  // Refusing to continue here also means no window, shortcut, or menu is
+  // ever created for a debug-flagged packaged launch.
+  if (debugFlags.length > 0) {
+    dialog.showErrorBox(
+      'CampusCode cannot start',
+      `CampusCode was launched with debugging/remote-inspection flags (${debugFlags.join(', ')}), ` +
+      'which are not permitted during an exam. Close this window and relaunch CampusCode normally.'
+    )
+    app.exit(1)
+    return
+  }
+
   const win = createWindow()
 
-  const registered = globalShortcut.register(DEV_MODE_SHORTCUT, () => toggleDevMode(win))
-  if (!registered) {
-    console.warn(`[dev-mode] failed to register shortcut ${DEV_MODE_SHORTCUT}`)
+  // The dev-mode toggle only exists in dev builds at all — not just
+  // disabled, entirely unregistered — so a packaged build has no keyboard
+  // path to lockdown, ever, under any circumstance.
+  if (!app.isPackaged) {
+    const registered = globalShortcut.register(DEV_MODE_SHORTCUT, () => toggleDevMode(win))
+    if (!registered) {
+      console.warn(`[dev-mode] failed to register shortcut ${DEV_MODE_SHORTCUT}`)
+    }
   }
 
   // Alt+Tab (window switching) is reserved by the OS window manager on
