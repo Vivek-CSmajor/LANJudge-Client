@@ -166,9 +166,9 @@ app.whenReady().then(() => {
   // ever created for a debug-flagged packaged launch.
   if (debugFlags.length > 0) {
     dialog.showErrorBox(
-      'CampusCode cannot start',
-      `CampusCode was launched with debugging/remote-inspection flags (${debugFlags.join(', ')}), ` +
-      'which are not permitted during an exam. Close this window and relaunch CampusCode normally.'
+      'LANJudge cannot start',
+      `LANJudge was launched with debugging/remote-inspection flags (${debugFlags.join(', ')}), ` +
+      'which are not permitted during an exam. Close this window and relaunch LANJudge normally.'
     )
     app.exit(1)
     return

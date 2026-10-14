@@ -1,18 +1,18 @@
-# CampusCode Client
+# LANJudge Client
 
-The participant app for [CampusCode](#part-of-campuscode) contests. Teams install it on their own laptop and use it to connect to the contest server, read problems, write and submit code, and follow the live scoreboard. It runs full-screen, locked down for the duration of the contest.
+The participant app for [LANJudge](#part-of-lanjudge) contests. Teams install it on their own laptop and use it to connect to the contest server, read problems, write and submit code, and follow the live scoreboard. It runs full-screen, locked down for the duration of the contest.
 
-## Part of CampusCode
+## Part of LANJudge
 
 | Repo | What it does |
 |---|---|
-| [CampusCode-Cloud](../CampusCode-Cloud) | Organisers author a contest there and download the bundle to run it. Participants download this app there. |
-| [CampusCode-Server](../CampusCode-Server) | Runs the contest offline on the organiser's laptop: judging, scoreboard, admin dashboard |
-| **CampusCode-Client** (this repo) | The participant app |
+| [LANJudge-Cloud](../LANJudge-Cloud) | Organisers author a contest there and download the bundle to run it. Participants download this app there. |
+| [LANJudge-Server](../LANJudge-Server) | Runs the contest offline on the organiser's laptop: judging, scoreboard, admin dashboard |
+| **LANJudge-Client** (this repo) | The participant app |
 
 ## Get the app
 
-Download the installer for your platform from the CampusCode Cloud app's **Download Participant App** page:
+Download the installer for your platform from the LANJudge Cloud app's **Download Participant App** page:
 
 **<http://65.0.183.82:8081>**
 

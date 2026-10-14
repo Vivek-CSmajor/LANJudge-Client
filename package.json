@@ -1,5 +1,5 @@
 {
-  "name": "campuscode-client",
+  "name": "lanjudge-client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,8 +13,8 @@
     "electron:build": "vite build && electron-builder --publish never"
   },
   "build": {
-    "appId": "com.campuscode.client",
-    "productName": "CampusCode",
+    "appId": "com.lanjudge.client",
+    "productName": "LANJudge",
     "directories": {
       "output": "release"
     },

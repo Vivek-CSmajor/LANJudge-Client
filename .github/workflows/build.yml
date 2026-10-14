@@ -22,7 +22,7 @@ jobs:
       - run: npm run electron:build
       - uses: actions/upload-artifact@v4
         with:
-          name: campuscode-client-${{ matrix.os }}
+          name: lanjudge-client-${{ matrix.os }}
           path: |
             release/*.dmg
             release/*.zip
