@@ -72,3 +72,7 @@ Each installation has a stable device ID, and your team is bound to the first de
 ## Tech
 
 Electron with a React and Vite front end, the Monaco editor, and `react-markdown`. Installers are built for macOS and Windows with `electron-builder`. A GitHub Actions workflow ([.github/workflows/build.yml](.github/workflows/build.yml)) builds them on both platforms from a `v*` tag or a manual run.
+
+## License
+
+[MIT](LICENSE) © 2026 Vivek Pandey
